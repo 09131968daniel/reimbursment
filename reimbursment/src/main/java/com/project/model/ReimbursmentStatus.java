@@ -24,7 +24,7 @@ public ReimbursmentStatus(int reimb_status_id, String reimb_status) {
 	this.reimb_status_id = reimb_status_id;
 	this.reimb_status = reimb_status;
 }
-public ReimbursmentStatus(int reimb_status_ids) {
+public ReimbursmentStatus(int reimb_status_id) {
 	super();
 	this.reimb_status_id = reimb_status_id;
 	this.reimb_status="notset";

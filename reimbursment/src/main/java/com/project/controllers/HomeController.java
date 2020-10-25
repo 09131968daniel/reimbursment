@@ -51,10 +51,13 @@ public class HomeController {
 				response.sendRedirect("http://localhost:8080/Reimbursment/managers.html");	
 		}
 	}
+	
+	
 
 	public static void insertReimbursment(HttpServletRequest request, HttpServletResponse response) {
 		String feed1=(String)request.getSession().getAttribute("feed1");
 		System.out.println("inside in insertReimbursment");
+		System.out.println(Integer.parseInt(request.getParameter("reimbstatusid")));
 		
 		if(request.getSession(false)==null) {
 			response.setStatus(403);
@@ -67,7 +70,7 @@ public class HomeController {
 			String reimb_description =request.getParameter("reimb_description");
 			int reimb_resolver_id =Integer.parseInt(request.getParameter("reimbresolverid"));
 			int reimb_status_id=Integer.parseInt(request.getParameter("reimbstatusid"));
-			int reimb_author=Integer.parseInt(request.getAttribute("user_id").toString());
+			int reimb_author=(int)request.getSession().getAttribute("user_id");
 			
 			
 			

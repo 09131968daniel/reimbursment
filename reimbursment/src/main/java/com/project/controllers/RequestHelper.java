@@ -43,7 +43,18 @@ public class RequestHelper {
 			HomeController.getHomePage(request,response);
 			break;
 		
+		case "/Reimbursment/api/data/reimbursmentstatuses.json":
+		  	DataController.sendReimbursmentStatus(request, response);
+		   break;
 		
+		case "/Reimbursment/api/data/reimbursmenttypes.json":
+		  	DataController.sendReimbursmentTypes(request, response);
+		   break;
+		
+		case "/Reimbursment/api/data/reimbursments.json":
+		  	DataController.sendReimbursments(request, response);
+		   break; 
+		   
 		default:
 			HomeController.getLoginPage(request,response);
 			break;

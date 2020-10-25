@@ -32,11 +32,11 @@
               <label for="reimb_status">Reimbursement status</label><br>
               <select id="reimbstatusid" name="reimbstatusid" >
                 <option  value="1">pending</option>
-                <option  value="2">aproved</option>
+                
                 </select><br>
-
+                <%= session.getAttribute("user_id")%>
              <label for="reimb_type">Reimbursement type:</label><br>
-             <select id="reimbtypeid" name="reimb_type_id">
+             <select id="reimbtypeid" name="reimbtypeid">
              <option value="1">travel</option>
              <option value="2">lodging</option>
              </select><br>

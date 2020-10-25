@@ -11,9 +11,28 @@ private String lastName;
 private String email;
 private String user_role;
 private int user_role_id;
+private String fullName;
 
 
 
+public String getUser_role() {
+	return user_role;
+}
+public void setUser_role(String user_role) {
+	this.user_role = user_role;
+}
+public int getUser_role_id() {
+	return user_role_id;
+}
+public void setUser_role_id(int user_role_id) {
+	this.user_role_id = user_role_id;
+}
+public String getFullName() {
+	return fullName;
+}
+public void setFullName(String fullName) {
+	this.fullName = fullName;
+}
 public int getUserId() {
 	return userId;
 }
@@ -70,6 +89,7 @@ public User(String username, String password, String firstName, String lastName,
 	this.password = password;
 	this.firstName = firstName;
 	this.lastName = lastName;
+	this.fullName=firstName+" "+lastName;
 	this.email = email;
 	this.user_role_id =user_role_id;
 	if (this.user_role_id==1) {
@@ -87,6 +107,7 @@ public User(String username, String password, String firstName, String lastName,
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.fullName=firstName+" "+lastName;
 		this.user_role_id =user_role_id;
 	    this.user_role=userRole;
 	    }  
@@ -95,6 +116,13 @@ public User(String username, String password, String firstName, String lastName,
 	    	this.userId=userId;
 	    }
 	    
+	    public User( int userId,String fullname) {
+			
+			super();
+			this.userId=userId;
+			this.fullName=fullname;
+	   
+	    }
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
