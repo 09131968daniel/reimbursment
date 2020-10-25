@@ -78,8 +78,29 @@ public User(String username, String password, String firstName, String lastName,
 	else {
 		this.user_role="employee";
 	}
-	
 }
+	
+	public User( int userId,String username, String firstName, String lastName, int user_role_id, String userRole) {
+		
+		super();
+		this.userId=userId;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.user_role_id =user_role_id;
+	    this.user_role=userRole;
+	    }  
+	    public User(int userId) {
+	    	super();
+	    	this.userId=userId;
+	    }
+	    
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", email=" + email + ", user_role=" + user_role
+				+ ", user_role_id=" + user_role_id + "]";
+	}
 
 
 

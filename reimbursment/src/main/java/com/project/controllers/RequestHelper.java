@@ -34,9 +34,15 @@ public class RequestHelper {
 			RegisterController.RegisterUser(request,response);
 			break;
 		
+		case "/Reimbursment/api/home/insert_reimbursement":
+			System.out.println("i'm in requesthelper at /api/home/insert_reimbursment");
+			HomeController.insertReimbursment(request,response);
+			break;
+			
 		case "/Reimbursment/api/home":
 			HomeController.getHomePage(request,response);
 			break;
+		
 		
 		default:
 			HomeController.getLoginPage(request,response);

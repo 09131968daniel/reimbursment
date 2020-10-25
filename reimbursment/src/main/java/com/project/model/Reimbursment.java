@@ -25,6 +25,19 @@ public Reimbursment(int reimb_id, double reimb_amount, String reimb_submitted, S
 	this.type = type;
 }
 
+public Reimbursment( double reimb_amount, User reimb_author,
+		User reimb_resolver, String reimb_description, ReimbursmentStatus status, ReimbursmentType type) {
+	super();
+	this.reimb_id = reimb_id;
+	this.reimb_amount = reimb_amount;
+
+	this.reimb_author = reimb_author;
+	this.reimb_resolver = reimb_resolver;
+	this.reimb_description = reimb_description;
+	this.status = status;
+	this.type = type;
+}
+
 public int getReimb_id() {
 	return reimb_id;
 }

@@ -8,6 +8,7 @@ public interface UserDAO {
 
 	public void RegisterUser(User u);
 	public int LoginUser(String username, String password);
+	public User getUserbyUsername(String s);
 	public int findUserbyUsername(String s);
  
-}
+};

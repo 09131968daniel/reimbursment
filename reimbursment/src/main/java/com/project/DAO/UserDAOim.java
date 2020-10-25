@@ -75,13 +75,14 @@ public class UserDAOim implements UserDAO{
 	
 
 	@Override
-	public int findUserbyUsername(String s) {
-		int user_id=-1;
+	public User getUserbyUsername(String s) {
+		
+		User u=null;
 		
 	
 		Connection conn = ConnectionFactory.getConnection();
 		
-		String sql="select u.ers_users_id, u.ers_user_role_id from  reimbursement.vw_users u where u.ers_username=(?)";
+		String sql="select u.ers_users_id,u.ers_username, user_first_name, user_last_name, u.ers_user_role_id,u.user_role  from  reimbursement.vw_users u where u.ers_username=(?)";
 		
 		try {
 		PreparedStatement ps=conn.prepareStatement(sql);
@@ -92,7 +93,14 @@ public class UserDAOim implements UserDAO{
 		
 		
 		while(rs.next()){
-			 user_id=rs.getInt(1);
+			u = new User(
+					rs.getInt(1), //user_id
+					rs.getString(2), //username
+					rs.getString(3), //first_name
+					rs.getString(4), //last_name
+					rs.getInt(5),   //role_id
+					rs.getString(6)  //role
+					);
 		
 		}
 		
@@ -102,9 +110,31 @@ public class UserDAOim implements UserDAO{
 		}
 		
 	
-		return user_id;
+		return u;
 	}
 
+	public int findUserbyUsername(String username) {
+		int id=-1 ;
+		
+		
+		Connection conn = ConnectionFactory.getConnection();
+		String sql="select u.ers_users_id from  reimbursement.vw_users u where u.ers_username=(?) ";
+		try {
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1, username);
+		
+		ResultSet rs=ps.executeQuery();
+		
+		while(rs.next()){
+			id=rs.getInt(1);
+			
+		}
+		
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return id ;
+	}
 	}
 
 

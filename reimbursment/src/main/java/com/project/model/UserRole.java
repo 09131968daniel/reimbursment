@@ -30,4 +30,9 @@ public UserRole(int ers_user_role_id, String user_role) {
 	this.ers_user_role_id = ers_user_role_id;
 	this.user_role = user_role;
 }
+public UserRole(int ers_user_role_id) {
+	super();
+	this.ers_user_role_id = ers_user_role_id;
+
+}
 }
