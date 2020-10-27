@@ -116,13 +116,17 @@ public User(String username, String password, String firstName, String lastName,
 	    	this.userId=userId;
 	    }
 	    
-	    public User( int userId,String fullname) {
-			
+
+	public User(int userId, String fullName) {
 			super();
-			this.userId=userId;
-			this.fullName=fullname;
-	   
-	    }
+			this.userId = userId;
+			this.fullName = fullName;
+		}
+	public User( String fullName,int userId) {
+		super();
+		this.userId = userId;
+		this.fullName = fullName;
+	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="

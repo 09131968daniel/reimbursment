@@ -59,16 +59,14 @@ public class ReimbursmentDAOim implements ReimbursmentDAO {
 	  rs=ps.executeQuery();
 	  
 	  while (rs.next()) { 
-	  
+	User u=  new User( "fdfdfd",1);
 	 ar.add(new Reimbursment(
 		rs.getInt(1),  //reimb_id
 		rs.	getDouble(2), //reimb_amount
 		rs.getString(3),  //reimb resolved
 		rs.getString(4),  // reimb_submitted
-	    new User(rs.getInt(9),  //reimb author
-	    		  rs.getString(10)),  //reimb_auth_name
-		new User (rs.getInt(5),  //reimb status id
-				  rs.getString(6)), //reimb status
+	    new User(rs.getInt(9), rs.getString(10)),  //reimb_auth_name
+		new User(rs.getInt(5),rs.getString(6)), //reimb status
 		rs.getInt(7),  //reimb_type_id
 		rs.getString(8),  //reimb_type
 

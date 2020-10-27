@@ -1,0 +1,38 @@
+<html>
+    <body>
+     
+     <div id="div1">
+    <button id="bt1">click to get data</button>
+     <input type="text" id="tx1">
+
+     </div>
+    <script>
+
+  var mydata="";
+   window.onload =function(){
+     
+       const url="http://localhost:3000/profile";
+       const method="get";
+       const xhr= new XMLHttpRequest()
+       xhr.onreadystatechange=()=>{
+           if (xhr.readystate===4 && xhr.status===200){
+               console.log("data received"+xhr.responseText);
+           }
+       }
+       xhr.open(method,url,true);
+       xhr.send();
+
+       var para=document.createElement("p");
+var node=document.createTextNode("this is the text");
+para.appendChild(node);
+var div1=document.getElementById("div1")
+div1.appendChild(para);
+       setTimeout(()=>document.getElementById("tx1").value=xhr.responseText,1000)
+ }
+
+</script>
+    </body>
+
+    
+    
+</html>
