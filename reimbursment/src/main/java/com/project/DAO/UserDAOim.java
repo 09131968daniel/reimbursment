@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.project.model.User;
+import com.project.model.UserRole;
 import com.project.util.ConnectionFactory;
 
 public class UserDAOim implements UserDAO{
@@ -28,12 +29,12 @@ public class UserDAOim implements UserDAO{
 		try {
 		PreparedStatement ps=conn.prepareStatement(sql);
 		
-		  ps.setString(1, u.getFirstName());
-		  ps.setString(2, u.getLastName());
-		  ps.setString(3, u.getEmail());
-		  ps.setString(4, u.getUsername());
-		  ps.setString(5, u.getPassword());
-		  ps.setInt(6, u.getuser_role_id());
+		  ps.setString(3, u.getFirstName());
+		  ps.setString(4, u.getLastName());
+		  ps.setString(5, u.getEmail());
+		  ps.setString(1, u.getUsername());
+		  ps.setString(2, u.getPassword());
+		  ps.setInt(6, u.getUserrole().getErs_user_role_id());
 		  
 		  boolean b=ps.execute();
 		 
@@ -98,8 +99,7 @@ public class UserDAOim implements UserDAO{
 					rs.getString(2), //username
 					rs.getString(3), //first_name
 					rs.getString(4), //last_name
-					rs.getInt(5),   //role_id
-					rs.getString(6)  //role
+					new UserRole(rs.getInt(5), rs.getString(6))  //role
 					);
 		
 		}

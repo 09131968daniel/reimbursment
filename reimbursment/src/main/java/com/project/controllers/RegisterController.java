@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.DAO.UserDAOim;
 import com.project.model.User;
+import com.project.model.UserRole;
 
 public class RegisterController {
  
@@ -38,7 +39,7 @@ if ( ret_username>0) {
 	red.forward(request, response);
 } else {
 
-User u=new User(username, password, first_name, last_name, email_address, user_role_id); 
+User u=new User(username, password, first_name, last_name, email_address, new UserRole(2,"employee")); 
 ud.RegisterUser(u);
  response.sendRedirect("http://localhost:8080/Reimbursment/login.html");
 

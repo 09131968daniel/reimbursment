@@ -1,32 +1,67 @@
 package com.project.model;
 
-import java.util.List;
-
 public class User {
 private int userId;
 private String username;
 private String password;
 private String firstName;
 private String lastName;
-private String email;
-private String user_role;
-private int user_role_id;
 private String fullName;
+private String email;
+private UserRole userrole;
+
+
+public User(String username, String password, String firstName, String lastName, String email, UserRole user_role) {
+	
+	super();
+	this.username = username;
+	this.password = password;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.fullName=firstName+" "+lastName;
+	this.email = email;
+	this.userrole=user_role;
+	
+}
+	
+	public User( int userId,String username, String firstName, String lastName, UserRole user_role ) {
+		
+		super();
+		this.userId=userId;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.fullName=firstName+" "+lastName;
+		this.userrole=user_role;
+		
+	    }  
+	
+public User(int userId) {
+	    	super();
+	    	this.userId=userId;
+	    }
+	    
+
+	public User(int Id, String Name) {
+			super();
+			this.userId = Id;
+			this.fullName = Name;
+			this.firstName = "noset";
+			this.lastName = "notset";
+			this.userrole= new UserRole(2,"employee");
+		    this.password = "notset";
+		    this.username = "notset";
+		    this.email = "notset";
+		}
+	
+
+
+public UserRole getUserrole() {
+	return userrole;
+}
 
 
 
-public String getUser_role() {
-	return user_role;
-}
-public void setUser_role(String user_role) {
-	this.user_role = user_role;
-}
-public int getUser_role_id() {
-	return user_role_id;
-}
-public void setUser_role_id(int user_role_id) {
-	this.user_role_id = user_role_id;
-}
 public String getFullName() {
 	return fullName;
 }
@@ -69,71 +104,19 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
-public String getuser_role() {
-	return user_role;
-}
-public void setuser_role(String user_role) {
-	this.user_role = user_role;
+
+
+
+public void setUser_role(UserRole user_role) {
+	this.userrole = user_role;
 }
 
-public int getuser_role_id() {
-	return user_role_id;
+@Override
+public String toString() {
+	return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+			+ ", lastName=" + lastName + ", fullName=" + fullName + ", email=" + email + ", user_role=" + userrole
+			+ "]";
 }
-public void setuser_role_id(int user_role_id) {
-	this.user_role_id = user_role_id;
-}
-public User(String username, String password, String firstName, String lastName, String email, int user_role_id) {
-	
-	super();
-	this.username = username;
-	this.password = password;
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.fullName=firstName+" "+lastName;
-	this.email = email;
-	this.user_role_id =user_role_id;
-	if (this.user_role_id==1) {
-		this.user_role="finance manager";
-	}
-	else {
-		this.user_role="employee";
-	}
-}
-	
-	public User( int userId,String username, String firstName, String lastName, int user_role_id, String userRole) {
-		
-		super();
-		this.userId=userId;
-		this.username = username;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.fullName=firstName+" "+lastName;
-		this.user_role_id =user_role_id;
-	    this.user_role=userRole;
-	    }  
-	    public User(int userId) {
-	    	super();
-	    	this.userId=userId;
-	    }
-	    
-
-	public User(int userId, String fullName) {
-			super();
-			this.userId = userId;
-			this.fullName = fullName;
-		}
-	public User( String fullName,int userId) {
-		super();
-		this.userId = userId;
-		this.fullName = fullName;
-	}
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", email=" + email + ", user_role=" + user_role
-				+ ", user_role_id=" + user_role_id + "]";
-	}
-
 
 
 

@@ -42,7 +42,7 @@ public class LoginController {
 					  session.setAttribute("user_username", username);
 					  session.setAttribute("user_email", u.getEmail());
 					  session.setAttribute("user_role_id", ret);
-					  session.setAttribute("user_role", u.getuser_role());
+					  session.setAttribute("user_role", u.getUserrole().getUser_role());
 					  session.setAttribute("user_first_name", u.getFirstName());
 					  session.setAttribute("user_last_name", u.getLastName());
 					  session.setAttribute("user_id", u.getUserId());

@@ -1,69 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-        </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        .......data here for tab2
-        </div>
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
-         <div style="margin-left:20px; border:solid;padding:20px;">
-           <form  id="insertreimbursement" name="insertreimbursment"  action="/Reimbursment/api/home/insert_reimbursement" method="post">
+
+<div class="container">
+  <h2>REIMBURSMENT PORTAL</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Submit</a></li>
+	<li><a data-toggle="tab" href="#menu3">History</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <hr>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Reimbursement submit page</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <form  id="insertreimbursement" name="insertreimbursment"  action="/Reimbursment/api/home/insert_reimbursement" method="post">
              <br>
             <fieldset>
-              <legend>Reimbursment submit page</legend>
-              <label for="dt">Current datetime</label><br>
-             <input  type="text" id="dt" name="dt" readonly><br>
-              <label for="reimb_status">Reimbursement status</label><br>
-              <select id="reimbstatusid" name="reimbstatusid" >
-                <option  value="1">pending</option>
-                
-                </select><br>
-               
-             <label for="reimb_type">Reimbursement type:</label><br>
+            <legend></legend>
+             <label for="dt">Current datetime</label><br>
+              <input  type="text" id="dt" name="dt" readonly >
+              <hr>
+              <label for="reimb_type">Reimbursement type:</label><br>
              <select id="reimbtypeid" name="reimbtypeid">
-             <option value="1">travel</option>
-             <option value="2">lodging</option>
-             </select><br>
+             <option value="1">Lodging</option>
+             <option value="2">Travel</option>
+             <option value="1">Food</option>
+             <option value="2">Other</option>
+             </select>
+             <hr>
              <label for="reimb_amount">reimbursment amount:</label> <br>
              <input type="number" id="reimb_amount" name="reimb_amount" min="1" max="1000" required><br>
+             <hr>
+              <label for="reimb_status">Reimbursement status</label><br>
+              <select id="reimbstatusid" name="reimbstatusid" >
+              <option  value="1">pending</option>
+              </select>
+              <hr>
+
              <label for "reimb_decription>Reimbursement description</label><br>
-             <textarea  name="reimb_description" id="reimb_description" rows="5" cols="45" required>
-             </textarea><br><br>
-             <select id="reimb_resolver" name="reimbresolverid" >
-              <option value="1" >default resolver</option>
-              </select><br>
+             <textarea  name="reimb_description" id="reimb_description" rows="4" cols="45" required>
+             </textarea><br>
+             <hr>
              <input type="submit" value="submit"><br>
             </fieldset>
            </form>
-         </div>
-        </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Reimbursement history</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      <hr>
+       <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Amount</th>
+			<th scope="col">Submitted</th>
+			<th scope="col">Resolved</th>
+			<th scope="col">Author</th>
+			<th scope="col">Resolver</th>
+			<th scope="col">Description</th>
+			<th scope="col">Status</th>
+			
+			
+        </tr>
+      </thead>
+      <tbody id="ReimbursmentTableBody"></tbody>
+    </div>
+  </div>
+</div>
 
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-      </div>
-    <script src="./JS/employee.js"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- 
+<script src="./JS/employee.js"></script>
 </body>
 </html>

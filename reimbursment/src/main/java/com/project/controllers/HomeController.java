@@ -45,49 +45,16 @@ public class HomeController {
 			
 			System.out.println(role);
 			
-			if (role==1)
+			if (role==2)
 				response.sendRedirect("http://localhost:8080/Reimbursment/employee.html");		
-			else if (role==2)
+			else if (role==1)
 				response.sendRedirect("http://localhost:8080/Reimbursment/managers.html");	
 		}
 	}
 	
 	
 
-	public static void insertReimbursment(HttpServletRequest request, HttpServletResponse response) {
-		String feed1=(String)request.getSession().getAttribute("feed1");
-		System.out.println("inside in insertReimbursment");
-		System.out.println(Integer.parseInt(request.getParameter("reimbstatusid")));
-		
-		if(request.getSession(false)==null) {
-			response.setStatus(403);
-		//	response.sendRedirect("http://localhost:8080/Reimbursment/api");
-			}
-		else  {
-			
-			double reimb_amount=Double.parseDouble(request.getParameter("reimb_amount"));
-			int reimb_type_id=Integer.parseInt(request.getParameter("reimbtypeid"));
-			String reimb_description =request.getParameter("reimb_description");
-			int reimb_resolver_id =Integer.parseInt(request.getParameter("reimbresolverid"));
-			int reimb_status_id=Integer.parseInt(request.getParameter("reimbstatusid"));
-			int reimb_author=(int)request.getSession().getAttribute("user_id");
-			
-			
-			
-			Reimbursment r= new Reimbursment(
-					reimb_amount,
-					new User(reimb_author),
-					new User(reimb_resolver_id),
-					reimb_description,
-					new ReimbursmentStatus(reimb_status_id),
-					new ReimbursmentType(reimb_type_id));
-					
-			ReimbursmentDAOim d =  new ReimbursmentDAOim();
-			d.insertReimbursment(r);
-			System.out.println("insert succesd:"+r.toString());
-		
-	}
-}
+
 }
 
 
