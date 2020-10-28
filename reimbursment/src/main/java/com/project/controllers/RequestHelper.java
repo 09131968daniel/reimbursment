@@ -58,7 +58,11 @@ public class RequestHelper {
 		case "/Reimbursment/api/data/userinfo.json":
 		  	DataController.sendReimbursments(request, response);
 		   break;   
-		   
+			
+		case "/Reimbursment/api/data/updateReimbursment":
+			System.out.println("i'm in requesthelper at /api/home/update_reimbursment");
+		  	DataController.updateReimbursmentById(request, response);
+		   break;
 		   
 		default:
 			HomeController.getLoginPage(request,response);

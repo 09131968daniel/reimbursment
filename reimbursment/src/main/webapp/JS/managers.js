@@ -1,4 +1,5 @@
 
+document.getElementById("dt").value=new Date();
 
 function renderTable(reimbursments) {
   for (const reimbursment of reimbursments) {

@@ -5,8 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
 
@@ -16,17 +18,16 @@
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
     <li><a data-toggle="tab" href="#menu1">Submit</a></li>
 	<li><a data-toggle="tab" href="#menu3">History</a></li>
+	<li><a  href="/Reimbursment/api/logout">Logout</a></li>
   </ul>
 
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <hr>
     </div>
     <div id="menu1" class="tab-pane fade">
       <h3>Reimbursement submit page</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <form  id="insertreimbursement" name="insertreimbursment"  action="/Reimbursment/api/home/insert_reimbursement" method="post">
              <br>
             <fieldset>
@@ -35,7 +36,7 @@
               <input  type="text" id="dt" name="dt" readonly >
               <hr>
               <label for="reimb_type">Reimbursement type:</label><br>
-             <select id="reimbtypeid" name="reimbtypeid">
+             <select id="reimbtypeid" name="reimbtypeid" >
              <option value="1">Lodging</option>
              <option value="2">Travel</option>
              <option value="1">Food</option>
@@ -50,7 +51,6 @@
               <option  value="1">pending</option>
               </select>
               <hr>
-
              <label for "reimb_decription>Reimbursement description</label><br>
              <textarea  name="reimb_description" id="reimb_description" rows="4" cols="45" required>
              </textarea><br>
@@ -65,8 +65,7 @@
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3>Reimbursement history</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-      <hr>
+      <hr><br>
        <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -77,9 +76,7 @@
 			<th scope="col">Author</th>
 			<th scope="col">Resolver</th>
 			<th scope="col">Description</th>
-			<th scope="col">Status</th>
-			
-			
+			<th scope="col">Status</th>		
         </tr>
       </thead>
       <tbody id="ReimbursmentTableBody"></tbody>

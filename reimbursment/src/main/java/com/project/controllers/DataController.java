@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.DAO.ReimbursmentDAO;
 import com.project.DAO.ReimbursmentDAOim;
 import com.project.DAO.ReimbursmentStatusDAOim;
 import com.project.DAO.ReimbursmentTypeDAOim;
@@ -18,6 +19,25 @@ import com.project.model.ReimbursmentType;
 import com.project.model.User;
 
 public class DataController {
+	
+	public static void updateReimbursmentById( HttpServletRequest req, HttpServletResponse res) throws IOException {
+		System.out.println("i'm in datacontroller updateReimbursment");
+		
+		int resolver_id=(int)(req.getSession().getAttribute("user_id"));
+		int reimb_status_id=Integer.parseInt(req.getParameter("reimb_status_id"));
+		int reimb_id=Integer.parseInt(req.getParameter("reimb_id"));
+		String user_role = (String)req.getSession().getAttribute("user_role");
+		
+		ReimbursmentDAO d = new ReimbursmentDAOim();
+		d.updateReimbursmentById(reimb_id,resolver_id,reimb_status_id);
+		
+		if (user_role.equals("finance manager")){
+			res.sendRedirect("http://localhost:8080/Reimbursment/managers.html");
+		}else
+		{
+			res.sendRedirect("http://localhost:8080/Reimbursment/employee.html");
+		}
+	}
 	
 	 public static void sendUserInfo( HttpServletRequest req,  HttpServletResponse res) {}
 	/*
@@ -63,9 +83,25 @@ public class DataController {
 	 public static void sendReimbursments(HttpServletRequest req,  HttpServletResponse res) throws JsonProcessingException, IOException {
 			System.out.print("inside reimbursments data controller");
 		 	ReimbursmentDAOim r =  new ReimbursmentDAOim();
-	
+		 	List<Reimbursment> reimbursment=null;
+		 	
+		 	int user_id=(int)req.getSession().getAttribute("user_id");
+		 	String user_role=(String)req.getSession().getAttribute("user_role");
+		 	
 		 	res.setContentType("text/json");
-		 	List<Reimbursment> reimbursment = r.getReimbursmentAll();
+		 	
+		 	System.out.print("user_role: "+ user_role);
+		 	if (user_role.equals("finance manager")) {
+		 		reimbursment = r.getReimbursmentAll();
+		 		
+		 		System.out.print("executed for finance manager role");
+		 	}
+		 	else {
+		 		System.out.print("executed for employee");
+		 		 reimbursment = r.getReimbursmentByUserId(user_id);
+		 	}
+		 	
+		 	
 		 
 		 	
 		 	System.out.print(reimbursment.toString());
@@ -80,8 +116,8 @@ public class DataController {
 			System.out.println(Integer.parseInt(request.getParameter("reimbstatusid")));
 			
 			if(request.getSession(false)==null) {
-				response.setStatus(403);
-			//	response.sendRedirect("http://localhost:8080/Reimbursment/api");
+			   response.setStatus(403);
+			   response.sendRedirect("http://localhost:8080/Reimbursment/login.html");
 				}
 			else  {
 				
@@ -91,7 +127,7 @@ public class DataController {
 				int reimb_resolver_id =1;
 				int reimb_status_id=Integer.parseInt(request.getParameter("reimbstatusid"));
 				int reimb_author=(int)request.getSession().getAttribute("user_id");
-				
+				String user_role=(String)request.getSession().getAttribute("user_role");
 				
 				
 				Reimbursment r= new Reimbursment(
@@ -103,12 +139,18 @@ public class DataController {
 						new ReimbursmentType(reimb_type_id));
 						
 				ReimbursmentDAOim d =  new ReimbursmentDAOim();
+				
 				d.insertReimbursment(r);
 				
-				response.sendRedirect("http://localhost:8080/Reimbursment/employee.html");
-				System.out.println("insert succesd:"+r.toString());
+				if (user_role.equals("finance manager")) {
+					System.out.println("user role:"+user_role +"insert succesd: "+r.toString());
+					response.sendRedirect("http://localhost:8080/Reimbursment/managers.html");
+				}else {
+					System.out.println("user role:"+user_role +"insert succesd: "+r.toString());
+					response.sendRedirect("http://localhost:8080/Reimbursment/employee.html");
 		}
 	}
 	 }
+}
 
  
