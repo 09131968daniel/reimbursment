@@ -10,5 +10,6 @@ public interface UserDAO {
 	public int LoginUser(String username, String password);
 	public User getUserbyUsername(String s);
 	public int findUserbyUsername(String s);
+	
  
 };

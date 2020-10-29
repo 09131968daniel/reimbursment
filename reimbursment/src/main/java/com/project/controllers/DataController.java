@@ -1,5 +1,6 @@
 package com.project.controllers;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import com.project.model.Reimbursment;
 import com.project.model.ReimbursmentStatus;
 import com.project.model.ReimbursmentType;
 import com.project.model.User;
+import com.project.model.UserRole;
 
 public class DataController {
 	
@@ -39,22 +41,27 @@ public class DataController {
 		}
 	}
 	
-	 public static void sendUserInfo( HttpServletRequest req,  HttpServletResponse res) {}
-	/*
-	 * User u = new User();
-	 * 
-	 * 
-	 * session.getAttribute("user_username"); session.geAttribute("user_email");
-	 * session.getAttribute("user_role_id"); session.getAttribute("user_role");
-	 * session.getAttribute("user_first_name");
-	 * session.getAttribute("user_last_name"); session.getAttribute("user_id");
-	 * 
-	 * res.setContentType("text/json"); ArrayList<ReimbursmentStatus>
-	 * reimbursmentStatuses = rstatus.getReimbursementStatusAll(); try {
-	 * res.getWriter().println(new
-	 * ObjectMapper().writeValueAsString(reimbursmentStatuses)); } catch
-	 * (IOException e) { } }
-	 */
+	 public static void sendUserInfo( HttpServletRequest req,  HttpServletResponse res) throws JsonProcessingException, IOException {
+	System.out.print("inside data controller userinfo");
+		
+		 int user_id=(int)req.getSession().getAttribute("user_id");
+		 String user_role=(String)req.getSession().getAttribute("user_role"); 
+		 String username=(String) req.getSession().getAttribute("user_username");
+		 String email=(String)req.getSession().getAttribute("user_email");
+		 String fname=(String)req.getSession().getAttribute("user_first_name");
+		 String lname=(String)req.getSession().getAttribute("user_last_name");
+	  
+	  
+	  res.setContentType("text/json");
+
+	  User u= new User(username, "notset", fname, lname, email, new UserRole(0,"notset"));
+	  System.out.print(u.toString());
+	
+	
+		  res.getWriter().println(new ObjectMapper().writeValueAsString(u));
+	 
+	  }
+	 
 
 	 public static void sendReimbursmentStatus( HttpServletRequest req,  HttpServletResponse res) {
 	
@@ -151,6 +158,28 @@ public class DataController {
 		}
 	}
 	 }
+
+		public static void sendReimbursmentsByStatus(HttpServletRequest request, HttpServletResponse response) throws IOException {
+			System.out.print("inside reimbursmentsBydata controller");
+		 	ReimbursmentDAOim r =  new ReimbursmentDAOim();
+		 	List<Reimbursment> reimbursment=null;
+		 	int status_id=Integer.parseInt(request.getParameter("status_id"));
+		 
+		 	response.setContentType("text/json");
+		 	
+		 	
+		 		reimbursment = r.getReimbursmentByStatus(status_id);
+		 		
+		
+		 	
+		 
+		 	
+		 	System.out.print(reimbursment.toString());
+		 	ObjectMapper om = new ObjectMapper();
+		 	
+		 	response.getWriter().write(om.writeValueAsString(reimbursment));
+			
+		}
 }
 
  

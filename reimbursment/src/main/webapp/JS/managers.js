@@ -1,8 +1,10 @@
 
+
 document.getElementById("dt").value=new Date();
 
 function renderTable(reimbursments) {
   for (const reimbursment of reimbursments) {
+  
     
     const tr = document.createElement("tr");
     
@@ -28,12 +30,38 @@ function renderTable(reimbursments) {
     tr.append(reimb_Id, reimb_amount, reimb_submited, reimb_resolved, reimb_author, reimb_resolver, reimb_description, reimb_status);
 
     document.getElementById("ReimbursmentTableBody").append(tr);
+    }
   }
-}
+
+function renderUser(users) {
+
+    document.getElementById("ifullName").value=`Welcome to portal  ${users.fullName}`;
+    document.getElementById("iuserName").value=`Username: ${users.username}`;
+    document.getElementById("ifirstName").value=`First name: ${users.firstName}`;
+    document.getElementById("ilastName").value=`Last name: ${users.lastName}`;
+    document.getElementById("iemail").value=`Email address: ${users.email}`;
+ }
+  
+
 
 async function asyncFetch(url, expression) {
   const response = await fetch(url);
   const json = await response.json();
   expression(json);
 }
-asyncFetch("http://localhost:8080/Reimbursment/api/data/reimbursments.json", renderTable);
+
+
+function getByStatus(status){
+    const rows = document.getElementById('ReimbursmentTableBody').innerHTML='';
+    if (status<5) {
+    asyncFetch("http://localhost:8080/Reimbursment/api/data/reimbursmentsByStatus.json?status_id="+status, renderTable);
+    }
+    else{
+    asyncFetch("http://localhost:8080/Reimbursment/api/data/reimbursments.json", renderTable);
+    }
+  }
+  
+ asyncFetch("http://localhost:8080/Reimbursment/api/data/reimbursments.json", renderTable);
+ asyncFetch("http://localhost:8080/Reimbursment/api/data/userinfo.json", renderUser);
+
+

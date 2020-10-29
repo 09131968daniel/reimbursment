@@ -149,8 +149,45 @@ public class ReimbursmentDAOim implements ReimbursmentDAO {
 		  
 		return 0;
 		  
+	}
+
+	@Override
+	public ArrayList<Reimbursment> getReimbursmentByStatus(int status_id) {
+		
+		ArrayList<Reimbursment> ar = new ArrayList<Reimbursment>(); 
+		Connection con = ConnectionFactory.getConnection();
+	  
+	  String  sql="select reimb_id,reimb_amount,reimb_submitted,coalesce(reimb_resolved,reimb_submitted) as reimb_submitted,reimb_author,author_name,reimb_resolver,resolver_name,trim(reimb_description), reimb_status_id,reimb_status,reimb_type_id,reimb_type from reimbursement.vw_reimbursement where reimb_status_id=(?)";
+	  try {
+	  PreparedStatement ps =con.prepareStatement(sql);
+	 
+	  ps.setInt(1,status_id);
+	  
+	  ResultSet rs=ps.executeQuery();
+	  
+	 
+	  while (rs.next()) { 
+	
+	 ar.add(new Reimbursment(
+		rs.getInt(1),
+		rs.	getDouble(2),
+		rs.getString(3),
+		rs.getString(4), 
+		new User(rs.getInt(5),rs.getString(6)),
+	    new User(rs.getInt(7), rs.getString(8)),
+	    rs.getString(9), 
+		new ReimbursmentStatus(rs.getInt(10), rs.getString(11)),
+		new ReimbursmentType(rs.getInt(12),rs.getString(13))
+			 ));
+	   }
+	  } 
+	  catch(SQLException e) {
+		  e.printStackTrace();
+		  }
+	  return ar;
 	}	
-}
+	}	
+
 
 
 

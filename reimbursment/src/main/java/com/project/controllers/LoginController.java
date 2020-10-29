@@ -47,8 +47,7 @@ public class LoginController {
 					  session.setAttribute("user_last_name", u.getLastName());
 					  session.setAttribute("user_id", u.getUserId());
 					 
-					  session.setAttribute("feed1","Welcome "+ username);
-
+					
 					  
 					  response.setStatus(300);					  
 					  response.sendRedirect("http://localhost:8080/Reimbursment/api/home");

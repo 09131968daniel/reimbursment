@@ -10,4 +10,5 @@ int insertReimbursment(Reimbursment r);
 ArrayList<Reimbursment> getReimbursmentAll();
 ArrayList<Reimbursment> getReimbursmentByUserId(int id);
 int updateReimbursmentById(int reimb_id,int  reimb_resolver_id, int reimb_status);
+ArrayList<Reimbursment> getReimbursmentByStatus(int status_id);
 }

@@ -28,10 +28,18 @@ function renderTable(reimbursments) {
     document.getElementById("ReimbursmentTableBody").append(tr);
   }
 }
-
+function renderUser(users) {
+  	document.getElementById("ifullName").value=`Welcome to portal  ${users.fullName}`;
+  	document.getElementById("iuserName").value=`Username: ${users.username}`;
+   document.getElementById("ifirstName").value=`First name: ${users.firstName}`;
+   document.getElementById("ilastName").value=`Last name: ${users.lastName}`;
+ document.getElementById("iemail").value=`Email address: ${users.email}`;
+ }
+ 
 async function asyncFetch(url, expression) {
   const response = await fetch(url);
   const json = await response.json();
   expression(json);
 }
+asyncFetch("http://localhost:8080/Reimbursment/api/data/userinfo.json", renderUser);
 asyncFetch("http://localhost:8080/Reimbursment/api/data/reimbursments.json", renderTable);

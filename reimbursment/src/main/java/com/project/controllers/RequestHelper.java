@@ -55,8 +55,11 @@ public class RequestHelper {
 		  	DataController.sendReimbursments(request, response);
 		   break; 
 		
+		case "/Reimbursment/api/data/reimbursmentsByStatus.json":
+		  	DataController.sendReimbursmentsByStatus(request, response);
+		   break; 
 		case "/Reimbursment/api/data/userinfo.json":
-		  	DataController.sendReimbursments(request, response);
+		  	DataController.sendUserInfo(request, response);
 		   break;   
 			
 		case "/Reimbursment/api/data/updateReimbursment":
