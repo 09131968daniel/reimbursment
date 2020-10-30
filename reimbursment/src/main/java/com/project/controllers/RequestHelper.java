@@ -68,6 +68,7 @@ public class RequestHelper {
 		   break;
 		   
 		default:
+			System.out.println("i'm in requesthelper at default");
 			HomeController.getLoginPage(request,response);
 			break;
 	}

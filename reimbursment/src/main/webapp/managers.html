@@ -104,17 +104,18 @@
       </table><br>
       
       <div>
-      <form action="/Reimbursment/api/data/updateReimbursment" method="post">
+      <form action="/Reimbursment/api/data/updateReimbursment" method="post" onsubmit="return validate()">
       <h3>Reimbursement Approval</h3>
       <hr>
       <label for="reimb_id">Select Id:</label>
-      <input style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" type="number" name="reimb_id"  placeholder="id"  required>
+      <select style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" id="cboId" name="reimb_id" ></select>
+      <input style="display:none; border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" type="number" name="_reimb_id"  placeholder="id"  >
       <label for="status">Select status</label>
       <select style="border-radius: 15px; width:20%; background-color:AliceBlue;padding:10px" id="reimb_status" name="reimb_status_id"  required>
       	 <option  value="3">Approved</option>
      	 <option  value="2">Denied</option>
-      </select><br><br>
-      	<button style="border-radius: 15px; width:10%; background-color:AliceBlue;padding:10px" type="submit">Update</button>
+      </select>
+      	<button style="border-radius: 15px; width:10%; background-color:AliceBlue;padding:10px;margin:15px" type="submit" ">Update</button>
       	<hr>
       </form>
       </div>

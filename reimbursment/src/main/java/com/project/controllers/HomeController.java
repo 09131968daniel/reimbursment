@@ -19,7 +19,8 @@ import com.project.model.User;
 
 public class HomeController {
 
-	public static void getLoginPage(HttpServletRequest request, HttpServletResponse response) {
+	public static void getLoginPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.print("inside home controller get login page");
 		request.getRequestDispatcher("http://localhost:8080/Reimbursment/login.html");
 		
 	}
@@ -31,7 +32,6 @@ public class HomeController {
 	}
 
 
-
 	@SuppressWarnings("unchecked")
 	
 	public static void getHomePage(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -39,7 +39,8 @@ public class HomeController {
 		
 		if(request.getSession(false)==null) {
 			response.setStatus(403);
-			response.sendRedirect("http://localhost:8080/Reimbursment/api");}
+			response.sendRedirect("http://localhost:8080/Reimbursment/api");
+			}
 		else  {
 			int role=(int)request.getSession().getAttribute("user_role_id");
 			
