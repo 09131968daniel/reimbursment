@@ -23,16 +23,17 @@ Technologies used
 
 Features  
 
-As a employee user
-⦁	I can register.
-⦁	I can login.
-⦁	I can submit reimbursement requests for my expenses.
+As a employee user  
+⦁	I can register.  
+⦁	I can login.  
+⦁	I can submit reimbursement requests for my expenses.  
 ⦁	I can see a history of   all my reimbursement requests.  
-⦁	I can logout from the portal.
-Aditional, as a  finance manger user
-⦁	I can see all employee requests for expense reimbursment.
-⦁	I can filter reimbursement requests based on the status.
-⦁	I can approve or deny requests for expense reimbursment for all employee.
+⦁	I can logout from the portal.  
+Aditional, as a  finance manger user  
+⦁	I can see all employee requests for expense reimbursment.  
+⦁	I can filter reimbursement requests based on the status.  
+⦁	I can approve or deny requests for expense reimbursment for all employee.  
+
 
 
 
