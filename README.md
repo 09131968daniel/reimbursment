@@ -43,7 +43,7 @@ Aditional, as a  finance manger user
 
 Apply CSS to get an improved user interface
 
-Getting Started  
+## Getting Started  
 
 1.	Navigate to your desired directory in your terminal, and run this command: git clone https://github.com/09131968daniel/reimbursment.git
 2.	Import the project into your desired IDE as a Maven project. This is confirmed to work in Eclipse.
