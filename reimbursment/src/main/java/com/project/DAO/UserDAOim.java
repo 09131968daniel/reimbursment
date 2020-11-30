@@ -83,7 +83,7 @@ public class UserDAOim implements UserDAO{
 	
 		Connection conn = ConnectionFactory.getConnection();
 		
-		String sql="select u.ers_users_id,u.ers_username, user_first_name, user_last_name, u.ers_user_role_id,u.user_role  from  reimbursement.vw_users u where u.ers_username=(?)";
+		String sql="select u.ers_users_id,u.ers_username, user_first_name, user_last_name, u.ers_user_role_id,u.user_role,user_email  from  reimbursement.vw_users u where u.ers_username=(?)";
 		
 		try {
 		PreparedStatement ps=conn.prepareStatement(sql);
@@ -99,7 +99,8 @@ public class UserDAOim implements UserDAO{
 					rs.getString(2), //username
 					rs.getString(3), //first_name
 					rs.getString(4), //last_name
-					new UserRole(rs.getInt(5), rs.getString(6))  //role
+					new UserRole(rs.getInt(5), rs.getString(6)), //role
+					rs.getString(7)
 					);
 		
 		}

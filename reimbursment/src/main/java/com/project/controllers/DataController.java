@@ -55,7 +55,7 @@ public class DataController {
 	  res.setContentType("text/json");
 
 	  User u= new User(username, "notset", fname, lname, email, new UserRole(0,"notset"));
-	  System.out.print(u.toString());
+	  System.out.print("userinfo:"+u.toString());
 	
 	
 		  res.getWriter().println(new ObjectMapper().writeValueAsString(u));

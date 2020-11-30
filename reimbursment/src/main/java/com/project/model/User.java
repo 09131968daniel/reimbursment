@@ -35,7 +35,17 @@ public User(String username, String password, String firstName, String lastName,
 		this.userrole=user_role;
 		
 	    }  
-	
+	public User( int userId,String username, String firstName, String lastName, UserRole user_role,String email ) {
+		
+		super();
+		this.userId=userId;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.fullName=firstName+" "+lastName;
+		this.userrole=user_role;
+		this.email = email;
+	    }  	
 public User(int userId) {
 	    	super();
 	    	this.userId=userId;
