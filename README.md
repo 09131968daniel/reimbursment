@@ -1,5 +1,7 @@
 
-# Expense reimbursment system
+# EXPENSE REIMBURSEMENT SYSTEM  
+
+## Project description
 
 The Expense Reimbursment System (ERS) will manage the process of reimbursement employees for expenses
 incurred while on company time. All employee in the company can login and submit requests for reimbursement
