@@ -9,19 +9,19 @@ deny request for expense reimbursement.
 
 Technologies used
 
-⦁	Javascript
-⦁	Java -  verson 8.0
+⦁	Javascript  
+⦁	Java -  verson 8.0  
 ⦁	HTML  
-⦁	CSS
-⦁	AJAX
-⦁	SQL
-⦁	Servlets
-⦁	PostgresSQL
-⦁	JDBC
-⦁	Agile-Scrum
+⦁	CSS  
+⦁	AJAX  
+⦁	SQL  
+⦁	Servlets  
+⦁	PostgresSQL  
+⦁	JDBC  
+⦁	Agile-Scrum  
  
 
-Features
+Features  
 
 As a employee user
 ⦁	I can register.
@@ -40,7 +40,6 @@ Improvements to be done
 
 Apply CSS to get an improved user interface
 
-
 Getting Started
 
 1.	Navigate to your desired directory in your terminal, and run this command: git clone https://github.com/09131968daniel/reimbursment.git
@@ -51,14 +50,16 @@ Getting Started
 	(https://tomcat.apache.org/)
 
 
-
 Contributers
 
 Daniel Constantinescu
 
-Usage
+
+Usage  
 
 1. Register
+
+![registration](https://user-images.githubusercontent.com/45954198/100654848-6a43ec00-3318-11eb-8be0-d2e40bf24d8e.png)
 2. login
 3. Submit reimbursement
 4. Finance manager will approve or deny your reimbursement
