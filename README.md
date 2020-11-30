@@ -1,5 +1,5 @@
 
-Expense reimbursment system
+# Expense reimbursment system
 
 The Expense Reimbursment System (ERS) will manage the process of reimbursement employees for expenses
 incurred while on company time. All employee in the company can login and submit requests for reimbursement
@@ -7,7 +7,7 @@ requests and past history for all employees in the company. Finance managers are
 deny request for expense reimbursement.
 
 
-Technologies used
+## Technologies used
 
 ⦁	Javascript  
 ⦁	Java -  verson 8.0  
@@ -21,7 +21,7 @@ Technologies used
 ⦁	Agile-Scrum  
  
 
-Features  
+## Features  
 
 As a employee user  
 ⦁	I can register.  
@@ -37,7 +37,7 @@ Aditional, as a  finance manger user
 
 
 
-Improvements to be done
+## Improvements to be done
 
 Apply CSS to get an improved user interface
 
@@ -52,12 +52,12 @@ Getting Started
 	
 
 
-Contributers  
+## Contributers  
 Daniel Constantinescu  
 
 
 
-Usage  
+## Usage  
 
 1. Register  
 
